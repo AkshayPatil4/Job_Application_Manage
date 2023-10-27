@@ -45,7 +45,7 @@ export class JobListComponent implements OnInit {
       
   }
 
-  displayedColumns: string[] = ['companyName', 'role', 'date',];
+  displayedColumns: string[] = ['companyName', 'role', 'date', 'edit'];
   dataSource = new MatTableDataSource(this.data);
 
 applyFilter(event: Event) {

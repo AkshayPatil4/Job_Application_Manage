@@ -18,13 +18,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JobListComponent } from './job-list/job-list.component';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { EditListComponent } from './edit-list/edit-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    JobListComponent
+    JobListComponent,
+    EditListComponent
   ],
   imports: [
     BrowserModule,
