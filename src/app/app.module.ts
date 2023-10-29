@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { JobListComponent } from './job-list/job-list.component';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { EditListComponent } from './edit-list/edit-list.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { EditListComponent } from './edit-list/edit-list.component';
     HomeComponent,
     HeaderComponent,
     JobListComponent,
-    EditListComponent
+    EditListComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
