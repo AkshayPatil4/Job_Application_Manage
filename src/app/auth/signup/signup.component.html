@@ -1,5 +1,5 @@
 
-
+<div class="alert alert-danger" *ngIf="error"><p>{{error}}</p></div>
 <mat-card color="primary" >
     <mat-card-content>
         <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" >
@@ -22,7 +22,9 @@
 
             
 
-            <button mat-raised-button color="accent" type="submit"  >Submit</button>
+            <button mat-raised-button color="accent" type="submit" [disabled]="signupForm.invalid"  >{{isLoginMode ? 'Login' : 'Sign Up'}}</button>
+        
+            <button mat-raised-button color="warn" class="spacer"  type="button" (click)="onSwitchMode()">Switch to {{isLoginMode ? 'Sign Up' : 'Login'}}</button>
            
           </form>
     </mat-card-content>

@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { JobListComponent } from './job-list/job-list.component';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { EditListComponent } from './edit-list/edit-list.component';
-import { LoginComponent } from './auth/login/login.component';
+
 import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
@@ -29,7 +29,7 @@ import { SignupComponent } from './auth/signup/signup.component';
     HeaderComponent,
     JobListComponent,
     EditListComponent,
-    LoginComponent,
+    
     SignupComponent
   ],
   imports: [

@@ -6,6 +6,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Subject, tap } from 'rxjs';
+import { User } from '../user-model';
+import { AuthService } from './auth.service';
 
 interface authresponseData {
   idToken: string;
@@ -21,11 +24,15 @@ interface authresponseData {
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-  constructor(private http: HttpClient) {}
-
+  constructor(private http: HttpClient, private authService : AuthService) {}
+  isLoginMode = true;
   signupForm!: FormGroup;
-  form = {};
-
+ 
+  error: string = '';
+ 
+  onSwitchMode(){
+    this.isLoginMode = !this.isLoginMode;
+  }
   ngOnInit(): void {
     this.signupForm = new FormGroup({
       email: new FormControl(null, { validators: [Validators.required] }),
@@ -35,25 +42,24 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     if (this.signupForm.invalid) {
       return;
-    } else {
+    } 
       const formData = this.signupForm.value;
-      this.form = {
-        email: formData.email,
-        password: formData.password,
-        returnSecureToken: true,
-      };
-      this.http
-        .post<authresponseData>(
-          'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAecRGdf8AvP-I0T8c6gv0qpFX6cBJYYfc',
-          this.form
-        )
-        .subscribe((responseData) => {
-          console.log(responseData);
-        });
 
-        
-    }
+      if(this.isLoginMode){
+
+      }
+
+      else{
+        this.authService.onSignup(formData.email, formData.password).subscribe(resData=>{
+          console.log(resData);
+        },
+        erorrRes=>{
+          console.log(erorrRes);
+        });
+      }
+      
+      
+      
     this.signupForm.reset();
-    
   }
 }
